@@ -6,6 +6,8 @@
 ![Docker Image CI](https://github.com/treyyoder/quakejs-docker/workflows/Docker%20Image%20CI/badge.svg)
 </div>
 
+> **Update**: This fork has been updated to use Debian 12 as the base Docker image, upgraded Node.js from version 12 to 18, and includes a Python script to fix mixed content issues, allowing the game to function properly over HTTPS connections. The WebSocket connections will automatically use WSS when served over HTTPS.
+
 ### A fully local and Dockerized quakejs server. Independent, unadulterated, and free from the middleman.  
 
 The goal of this project was to create a fully independent quakejs server in Docker that does not require content to be served from the internet.
@@ -52,6 +54,12 @@ After pulling the repo, change both `Dockerfile` and `entrypoint.sh` from CRLF t
 Build the image with:
 
 `docker build --add-host=content.quakejs.com:127.0.0.1 -t treyyoder/quakejs:latest .`
+
+#### HTTPS Support
+This fork includes a Python script (`fix_mixed_content.py`) that modifies JavaScript files to support HTTPS connections. The script:
+- Converts HTTP asset URLs to HTTPS
+- Makes WebSocket connections use WSS protocol when the page is served over HTTPS
+- Automatically runs during container startup
 
 ## Credits:
 
