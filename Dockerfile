@@ -11,7 +11,7 @@ RUN apt-get install sudo curl git nodejs npm jq apache2 wget apt-utils python3 -
 RUN curl -fsSL https://deb.nodesource.com/setup_18.x | bash -
 
 # Fix mixed content
-RUN git clone https://github.com/nerosketch/quakejs.git
+RUN git clone https://github.com/tarcisiomiranda/quakejs.git
 
 
 WORKDIR /quakejs
